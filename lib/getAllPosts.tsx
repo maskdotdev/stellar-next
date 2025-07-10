@@ -1,0 +1,198 @@
+export type Post = {
+  id: number;
+  title: string;
+  content: string;
+  author: string;
+  authorImage: string;
+  date: string;
+  category: (typeof Categories)[number];
+};
+
+export const Categories = ["News", "General", "Improvements"] as const;
+
+export default async function getAllPosts() {
+const posts: Post[] = [
+  {
+    "id": 1,
+    "title": "Version 0.0.2 Released - Stable Build Now Available",
+    "content": "We've officially released version 0.0.2 of Stellar! This update includes crucial Cargo.lock synchronization fixes that ensure consistent builds across all environments. The release marks our transition from alpha to stable versioning, making Stellar more reliable.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-07",
+    "category": "News"
+  },
+  {
+    "id": 2,
+    "title": "Build System Improvements and Version Management",
+    "content": "Enhanced our build pipeline with proper version synchronization across package.json, Cargo.toml, and tauri.conf.json. These changes resolve lockfile inconsistencies and ensure smooth CI/CD operations. The update also includes a transition to alpha pre-release versioning for better development stage indication.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-07",
+    "category": "Improvements"
+  },
+  {
+    "id": 3,
+    "title": "Major Library Component Refactoring",
+    "content": "Completed a comprehensive reorganization of the library components into organized subdirectories. Components are now properly grouped into categories/, core/, documents/, and shared/ folders with clean index.ts exports. This refactoring significantly improves code maintainability and developer experience.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-07",
+    "category": "Improvements"
+  },
+  {
+    "id": 4,
+    "title": "Clean Build Achievement - All Compiler Warnings Fixed",
+    "content": "Achieved a completely clean build by fixing all compiler warnings in both backend and frontend. Resolved unreachable pattern warnings in embeddings/cloud.rs, removed unused imports across TypeScript files, and updated model handling logic. All builds now complete successfully with zero warnings.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-06",
+    "category": "General"
+  },
+  {
+    "id": 5,
+    "title": "Code Quality Improvements and Legacy Updates",
+    "content": "Updated outdated ChromaDB references following our migration to sqlite-vec. Improved logging messages, enhanced embedding setup configuration guidance, and standardized code style. Performance improvements include converting forEach loops to for...of loops throughout the hotkey system.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-06",
+    "category": "Improvements"
+  },
+  {
+    "id": 6,
+    "title": "UI Consistency Update - PDF Action Terminology",
+    "content": "Standardized PDF action terminology across the application by changing 'Upload PDF' to 'Add PDF' in library components. This update includes the library header button, PDF upload dialog title, and document view actions, providing a clearer and more action-oriented user experience.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-06",
+    "category": "General"
+  },
+  {
+    "id": 7,
+    "title": "OpenAI-Compatible Embedding Support Added",
+    "content": "Introduced comprehensive OpenAI-compatible embedding support with a new OpenAICompatibleEmbeddings struct. This feature enables custom OpenAI-compatible endpoints, supports custom base URLs and API keys, and provides 74 new lines of robust embedding functionality. The update significantly expands our ecosystem support for embedding providers.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-06",
+    "category": "News"
+  },
+  {
+    "id": 8,
+    "title": "Embedding Service Parameter Updates",
+    "content": "Improved the embedding service by updating legacy parameter names for better clarity. Changed chromaUrl to legacyUrl while maintaining backward compatibility with existing embedding initialization. This update includes enhanced code documentation and improved parameter naming consistency.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-06",
+    "category": "General"
+  },
+  {
+    "id": 9,
+    "title": "Comprehensive Onboarding Documentation Added",
+    "content": "Added detailed onboarding plan documentation with comprehensive user flow analysis. The new ONBOARDING_PLAN.md includes a 3-step onboarding strategy, UI component specifications, progressive disclosure approaches, and setup validation methods. Also documented the OpenAI auto-configuration feature and technical implementation details.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-06",
+    "category": "Improvements"
+  },
+  {
+    "id": 10,
+    "title": "Onboarding Dialog Integration Complete",
+    "content": "Successfully integrated the onboarding dialog into the main application. Added onboarding state management with useState hook, initialization checks, and proper completion handling. The onboarding dialog now appears automatically on first app launch for new users, providing a guided introduction to Stellar's features.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-06",
+    "category": "News"
+  },
+  {
+    "id": 11,
+    "title": "Core Onboarding System Launched",
+    "content": "Launched a comprehensive 3-step onboarding system featuring a welcome screen with value proposition, AI provider selection (OpenAI, Ollama, Anthropic), and success screen with next steps. Includes centralized OnboardingService with flag-based completion tracking, API key input validation, and progressive UI with smooth transitions.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-06",
+    "category": "News"
+  },
+  {
+    "id": 12,
+    "title": "Onboarding State Management Added to Settings",
+    "content": "Enhanced the settings store with onboarding state management capabilities. Added onboardingCompleted and showOnboarding flags with corresponding setter methods and actions. The onboarding state is now properly persisted through Zustand middleware and exported via the useAppSettings hook.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-06",
+    "category": "Improvements"
+  },
+  {
+    "id": 13,
+    "title": "Hotkey System Re-enabled and Dependency Cleanup",
+    "content": "Re-enabled the hotkey functionality by removing the problematic clipboard-manager dependency and cleaning up related permissions. The hotkey system is now fully operational with keydown event listeners restored. This change reduces the dependency footprint while maintaining core functionality.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-05",
+    "category": "Improvements"
+  },
+  {
+    "id": 14,
+    "title": "Compiler Warnings Cleanup Complete",
+    "content": "Achieved a clean build by removing duplicate DatabaseState type definitions and unused imports. Fixed ambiguous glob re-exports, removed unnecessary variables in embeddings.rs, and consolidated DatabaseState imports. The codebase now compiles with zero warnings, improving overall code quality.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-05",
+    "category": "General"
+  },
+  {
+    "id": 15,
+    "title": "Action Statistics Query Bug Fix",
+    "content": "Fixed a critical malformed JSON error in the get_action_stats() function. Added proper error handling for documents_accessed calculation and improved handling of NULL values and invalid JSON in SQLite queries. This resolves the 'malformed JSON' error when fetching action statistics.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-05",
+    "category": "General"
+  },
+  {
+    "id": 16,
+    "title": "App Menu Disabled and Clipboard Manager Added",
+    "content": "Streamlined the user interface by disabling the Tauri app menu to remove the native menu bar. Added tauri-plugin-clipboard-manager dependency for enhanced clipboard functionality. This change provides a cleaner, more focused user experience while maintaining necessary clipboard operations.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-05",
+    "category": "Improvements"
+  },
+  {
+    "id": 17,
+    "title": "Tooltip System Enhancement",
+    "content": "Improved the tooltip wrapper implementation with forwardRef for better ref handling. Added proper ref forwarding for both enabled and disabled states, and simplified tooltip usage in slim-nav-rail components. This enhancement improves code readability and maintainability across the application.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-05",
+    "category": "Improvements"
+  },
+  {
+    "id": 18,
+    "title": "Database State Management Improvements",
+    "content": "Resolved duplicate type definitions and cleaned up database state management. Consolidated imports and removed unused dependencies to achieve a cleaner, more maintainable codebase. These changes improve the overall architecture and reduce potential conflicts in the database layer.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-05",
+    "category": "General"
+  },
+  {
+    "id": 19,
+    "title": "Enhanced Error Handling in Statistics",
+    "content": "Implemented robust error handling for the action statistics system. Added proper NULL value handling and JSON validation in SQLite queries to prevent malformed JSON errors. This improvement ensures reliable statistics reporting and better user experience when accessing usage data.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-05",
+    "category": "General"
+  },
+  {
+    "id": 20,
+    "title": "Performance Optimizations and Code Style Updates",
+    "content": "Implemented performance optimizations by converting forEach loops to for...of loops throughout the hotkey system. Updated code style consistency, improved comments, and enhanced overall code readability. These changes contribute to better performance and maintainability of the application.",
+    "author": "mask",
+    "authorImage": "/images/mask.jpeg",
+    "date": "2025-07-05",
+    "category": "Improvements"
+  }
+] 
+
+  return posts;
+}
