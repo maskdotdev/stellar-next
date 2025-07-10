@@ -1,3 +1,5 @@
+"use client";
+
 import PageHeader from "@/components/page-header";
 
 export default function HeroSection() {
@@ -15,8 +17,15 @@ export default function HeroSection() {
 
           <div className="max-w-3xl mx-auto">
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <button className="btn text-lg text-gray-100 bg-gray-900/80 hover:bg-gray-800/80 dark:text-gray-800 dark:bg-gray-100 dark:hover:bg-white/80">
-                Start Learning Today
+              <button 
+                className="btn text-lg text-gray-100 bg-gray-900/80 hover:bg-gray-800/80 dark:text-gray-800 dark:bg-gray-100 dark:hover:bg-white/80"
+                onClick={() => {
+                  document.getElementById('download-section')?.scrollIntoView({ 
+                    behavior: 'smooth' 
+                  });
+                }}
+              >
+                Start Learning Faster
               </button>
               <button className="btn text-teal-600 bg-transparent border-teal-600 hover:bg-teal-50 text-lg px-8 py-3">
                 Watch Demo

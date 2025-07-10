@@ -113,7 +113,7 @@ export default function Footer() {
         <div className="max-w-6xl mx-auto">
           <div className="py-8">
             {/* Top section with buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <div id="download-section" className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button className="bg-teal-600 hover:bg-teal-700 text-white">
