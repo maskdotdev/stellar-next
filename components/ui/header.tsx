@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import ThemeToggle from "./theme-toggle";
 import Image from "next/image";
@@ -44,6 +46,18 @@ export default function Header() {
                   >
                     FAQ
                   </Link>
+                </li>
+                <li>
+                  <button
+                    className="text-gray-800 dark:text-gray-200 rounded-lg hover:bg-teal-100 dark:hover:bg-gray-800/30 transition-colors py-1.5 px-3"
+                    onClick={() => {
+                      document.getElementById('download-section')?.scrollIntoView({ 
+                        behavior: 'smooth' 
+                      });
+                    }}
+                  >
+                    Download
+                  </button>
                 </li>
               </ul>
             </nav>
